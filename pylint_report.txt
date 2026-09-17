@@ -1,0 +1,824 @@
+************* Module app
+app/__init__.py:1:0: C0305: Trailing newlines (trailing-newlines)
+************* Module app.main
+app/main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/main.py:5:0: R0402: Use 'from app.routers import auth' instead (consider-using-from-import)
+app/main.py:6:0: R0402: Use 'from app.routers import category' instead (consider-using-from-import)
+app/main.py:7:0: R0402: Use 'from app.routers import customer' instead (consider-using-from-import)
+app/main.py:8:0: R0402: Use 'from app.routers import payment' instead (consider-using-from-import)
+app/main.py:9:0: R0402: Use 'from app.routers import product' instead (consider-using-from-import)
+app/main.py:10:0: R0402: Use 'from app.routers import receipt' instead (consider-using-from-import)
+app/main.py:11:0: R0402: Use 'from app.routers import sale' instead (consider-using-from-import)
+app/main.py:12:0: R0402: Use 'from app.routers import sale_item' instead (consider-using-from-import)
+app/main.py:13:0: R0402: Use 'from app.routers import supplier' instead (consider-using-from-import)
+app/main.py:14:0: R0402: Use 'from app.routers import user' instead (consider-using-from-import)
+************* Module app.config
+app/config.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/config.py:4:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.database
+app/database.py:32:0: C0305: Trailing newlines (trailing-newlines)
+app/database.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/database.py:25:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module app.dependencies
+app/dependencies.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.routers
+app/routers/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.routers.category
+app/routers/category.py:15:0: C0301: Line too long (131/100) (line-too-long)
+app/routers/category.py:19:0: C0301: Line too long (118/100) (line-too-long)
+app/routers/category.py:23:0: C0301: Line too long (115/100) (line-too-long)
+app/routers/category.py:30:0: C0301: Line too long (137/100) (line-too-long)
+app/routers/category.py:37:0: C0301: Line too long (115/100) (line-too-long)
+app/routers/category.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/category.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/category.py:15:83: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/category.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/category.py:19:73: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/category.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/category.py:23:67: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/category.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/category.py:30:92: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/category.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/category.py:37:70: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.sale
+app/routers/sale.py:15:0: C0301: Line too long (126/100) (line-too-long)
+app/routers/sale.py:19:0: C0301: Line too long (115/100) (line-too-long)
+app/routers/sale.py:23:0: C0301: Line too long (107/100) (line-too-long)
+app/routers/sale.py:30:0: C0301: Line too long (130/100) (line-too-long)
+app/routers/sale.py:37:0: C0301: Line too long (107/100) (line-too-long)
+app/routers/sale.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/sale.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale.py:15:78: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale.py:19:65: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale.py:23:59: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale.py:30:80: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale.py:37:91: E0602: Undefined variable 'require_admin' (undefined-variable)
+app/routers/sale.py:37:62: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.sale_item
+app/routers/sale_item.py:15:0: C0301: Line too long (131/100) (line-too-long)
+app/routers/sale_item.py:19:0: C0301: Line too long (124/100) (line-too-long)
+app/routers/sale_item.py:23:0: C0301: Line too long (117/100) (line-too-long)
+app/routers/sale_item.py:30:0: C0301: Line too long (144/100) (line-too-long)
+app/routers/sale_item.py:37:0: C0301: Line too long (117/100) (line-too-long)
+app/routers/sale_item.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/sale_item.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale_item.py:15:83: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale_item.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale_item.py:19:74: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale_item.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale_item.py:23:69: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale_item.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale_item.py:30:94: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/sale_item.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/sale_item.py:37:101: E0602: Undefined variable 'require_admin' (undefined-variable)
+app/routers/sale_item.py:37:72: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.customer
+app/routers/customer.py:15:0: C0301: Line too long (130/100) (line-too-long)
+app/routers/customer.py:19:0: C0301: Line too long (121/100) (line-too-long)
+app/routers/customer.py:23:0: C0301: Line too long (115/100) (line-too-long)
+app/routers/customer.py:30:0: C0301: Line too long (137/100) (line-too-long)
+app/routers/customer.py:37:0: C0301: Line too long (115/100) (line-too-long)
+app/routers/customer.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/customer.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/customer.py:15:82: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/customer.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/customer.py:19:73: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/customer.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/customer.py:23:67: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/customer.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/customer.py:30:92: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/customer.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/customer.py:37:70: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.auth
+app/routers/auth.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/auth.py:13:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/auth.py:17:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/auth.py:1:0: W0611: Unused HTTPException imported from fastapi (unused-import)
+app/routers/auth.py:5:0: W0611: Unused settings imported from app.config (unused-import)
+************* Module app.routers.user
+app/routers/user.py:15:0: C0301: Line too long (123/100) (line-too-long)
+app/routers/user.py:19:0: C0301: Line too long (110/100) (line-too-long)
+app/routers/user.py:27:0: C0301: Line too long (104/100) (line-too-long)
+app/routers/user.py:34:0: C0301: Line too long (125/100) (line-too-long)
+app/routers/user.py:41:0: C0301: Line too long (107/100) (line-too-long)
+app/routers/user.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/user.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/user.py:15:78: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/user.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/user.py:19:65: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/user.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/user.py:23:11: W0613: Unused argument 'db' (unused-argument)
+app/routers/user.py:27:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/user.py:27:59: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/user.py:34:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/user.py:34:80: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/user.py:41:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/user.py:41:62: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.receipt
+app/routers/receipt.py:16:0: C0301: Line too long (129/100) (line-too-long)
+app/routers/receipt.py:20:0: C0301: Line too long (121/100) (line-too-long)
+app/routers/receipt.py:24:0: C0301: Line too long (113/100) (line-too-long)
+app/routers/receipt.py:31:0: C0301: Line too long (139/100) (line-too-long)
+app/routers/receipt.py:38:0: C0301: Line too long (113/100) (line-too-long)
+app/routers/receipt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/receipt.py:16:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/receipt.py:16:81: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/receipt.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/receipt.py:20:71: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/receipt.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/receipt.py:24:65: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/receipt.py:31:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/receipt.py:31:89: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/receipt.py:38:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/receipt.py:38:68: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.payment
+app/routers/payment.py:15:0: C0301: Line too long (129/100) (line-too-long)
+app/routers/payment.py:19:0: C0301: Line too long (119/100) (line-too-long)
+app/routers/payment.py:23:0: C0301: Line too long (113/100) (line-too-long)
+app/routers/payment.py:30:0: C0301: Line too long (134/100) (line-too-long)
+app/routers/payment.py:37:0: C0301: Line too long (113/100) (line-too-long)
+app/routers/payment.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/payment.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/payment.py:15:81: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/payment.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/payment.py:19:71: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/payment.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/payment.py:23:65: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/payment.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/payment.py:30:89: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/payment.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/payment.py:37:68: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.product
+app/routers/product.py:15:0: C0301: Line too long (129/100) (line-too-long)
+app/routers/product.py:19:0: C0301: Line too long (106/100) (line-too-long)
+app/routers/product.py:23:0: C0301: Line too long (104/100) (line-too-long)
+app/routers/product.py:27:0: C0301: Line too long (128/100) (line-too-long)
+app/routers/product.py:31:0: C0301: Line too long (113/100) (line-too-long)
+app/routers/product.py:38:0: C0301: Line too long (146/100) (line-too-long)
+app/routers/product.py:45:0: C0301: Line too long (125/100) (line-too-long)
+app/routers/product.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/product.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/product.py:15:81: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/product.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/product.py:19:58: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/product.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/product.py:23:56: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/product.py:27:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/product.py:27:71: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/product.py:31:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/product.py:31:65: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/product.py:38:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/product.py:38:89: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/product.py:45:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/product.py:45:68: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.routers.supplier
+app/routers/supplier.py:15:0: C0301: Line too long (130/100) (line-too-long)
+app/routers/supplier.py:19:0: C0301: Line too long (118/100) (line-too-long)
+app/routers/supplier.py:23:0: C0301: Line too long (115/100) (line-too-long)
+app/routers/supplier.py:30:0: C0301: Line too long (137/100) (line-too-long)
+app/routers/supplier.py:37:0: C0301: Line too long (115/100) (line-too-long)
+app/routers/supplier.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/routers/supplier.py:15:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/supplier.py:15:82: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/supplier.py:19:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/supplier.py:19:73: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/supplier.py:23:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/supplier.py:23:67: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/supplier.py:30:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/supplier.py:30:92: W0613: Unused argument 'current_user' (unused-argument)
+app/routers/supplier.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/routers/supplier.py:37:70: W0613: Unused argument 'current_user' (unused-argument)
+************* Module app.repositories.supplier_repository
+app/repositories/supplier_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories.sale_repository
+app/repositories/sale_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories
+app/repositories/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories.product_repository
+app/repositories/product_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories.receipt_repository
+app/repositories/receipt_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories.user_repository
+app/repositories/user_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/repositories/user_repository.py:57:8: C0415: Import outside toplevel (datetime.datetime) (import-outside-toplevel)
+************* Module app.repositories.payment_repository
+app/repositories/payment_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories.customer_repository
+app/repositories/customer_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories.sale_item_repository
+app/repositories/sale_item_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.repositories.category_repository
+app/repositories/category_repository.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.core.security
+app/core/security.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/core/security.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/core/security.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/core/security.py:17:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/core/security.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/core/security.py:42:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise ValueError('Token has expired') from exc' (raise-missing-from)
+app/core/security.py:44:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise ValueError('Invalid token') from exc' (raise-missing-from)
+app/core/security.py:46:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/core/security.py:60:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module app.core.__init__
+app/core/__init__.py:1:0: C0305: Trailing newlines (trailing-newlines)
+************* Module app.schemas
+app/schemas/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.schemas.category
+app/schemas/category.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/category.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/category.py:15:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/category.py:19:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/category.py:26:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.sale
+app/schemas/sale.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/sale.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/sale.py:27:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/sale.py:31:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/sale.py:47:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.sale_item
+app/schemas/sale_item.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/sale_item.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/sale_item.py:20:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/sale_item.py:24:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/sale_item.py:36:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.customer
+app/schemas/customer.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/customer.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/customer.py:27:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/customer.py:31:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/customer.py:50:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.user
+app/schemas/user.py:13:0: C0301: Line too long (105/100) (line-too-long)
+app/schemas/user.py:34:0: C0301: Line too long (116/100) (line-too-long)
+app/schemas/user.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/user.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/user.py:20:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/user.py:24:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/user.py:29:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/user.py:42:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/user.py:51:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.receipt
+app/schemas/receipt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/receipt.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/receipt.py:18:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/receipt.py:22:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/receipt.py:32:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.payment
+app/schemas/payment.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/payment.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/payment.py:19:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/payment.py:23:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/payment.py:33:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.product
+app/schemas/product.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/product.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/product.py:23:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/product.py:27:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/product.py:41:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.schemas.supplier
+app/schemas/supplier.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/schemas/supplier.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/supplier.py:23:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/supplier.py:27:0: C0115: Missing class docstring (missing-class-docstring)
+app/schemas/supplier.py:41:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module app.models
+app/models/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module app.models.category
+app/models/category.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/category.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/category.py:11:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module app.models.sale
+app/models/sale.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/sale.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/sale.py:12:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module app.models.sale_item
+app/models/sale_item.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/sale_item.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/sale_item.py:11:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module app.models.customer
+app/models/customer.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/customer.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/customer.py:11:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module app.models.user
+app/models/user.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/user.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/user.py:11:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+app/models/user.py:4:0: W0611: Unused Integer imported from sqlalchemy (unused-import)
+************* Module app.models.receipt
+app/models/receipt.py:16:0: C0301: Line too long (117/100) (line-too-long)
+app/models/receipt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/receipt.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/receipt.py:11:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module app.models.payment
+app/models/payment.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/payment.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/payment.py:12:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+app/models/payment.py:3:0: W0611: Unused Decimal imported from decimal (unused-import)
+************* Module app.models.product
+app/models/product.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/product.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/product.py:12:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module app.models.supplier
+app/models/supplier.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/models/supplier.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+app/models/supplier.py:12:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+app/models/supplier.py:3:0: W0611: Unused Decimal imported from decimal (unused-import)
+************* Module app.services.category_service
+app/services/category_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/category_service.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/category_service.py:10:30: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/category_service.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/category_service.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/category_service.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/category_service.py:28:33: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/category_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/category_service.py:33:33: W0622: Redefining built-in 'id' (redefined-builtin)
+************* Module app.services.supplier_service
+app/services/supplier_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/supplier_service.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/supplier_service.py:10:30: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/supplier_service.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/supplier_service.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/supplier_service.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/supplier_service.py:28:33: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/supplier_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/supplier_service.py:33:33: W0622: Redefining built-in 'id' (redefined-builtin)
+************* Module app.services
+app/services/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/__init__.py:1:0: W0406: Module import itself (import-self)
+************* Module app.services.sale_service
+app/services/sale_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/sale_service.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/sale_service.py:10:26: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/sale_service.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/sale_service.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/sale_service.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/sale_service.py:28:29: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/sale_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/sale_service.py:33:29: W0622: Redefining built-in 'id' (redefined-builtin)
+************* Module app.services.product_service
+app/services/product_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/product_service.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/product_service.py:10:29: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/product_service.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/product_service.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/product_service.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/product_service.py:28:32: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/product_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/product_service.py:33:32: W0622: Redefining built-in 'id' (redefined-builtin)
+************* Module app.services.user_service
+app/services/user_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/user_service.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/user_service.py:10:26: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/user_service.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/user_service.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/user_service.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/user_service.py:28:29: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/user_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/user_service.py:33:29: W0622: Redefining built-in 'id' (redefined-builtin)
+************* Module app.services.auth_service
+app/services/auth_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/auth_service.py:16:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/auth_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/auth_service.py:71:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/auth_service.py:100:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid refresh token') from exc' (raise-missing-from)
+app/services/auth_service.py:106:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/auth_service.py:122:12: W0707: Consider explicitly re-raising using 'except ValueError as exc' and 'raise credentials_error from exc' (raise-missing-from)
+app/services/auth_service.py:126:12: W0707: Consider explicitly re-raising using 'raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Token has expired', headers={'WWW-Authenticate': 'Bearer'}) from e' (raise-missing-from)
+app/services/auth_service.py:131:8: W0707: Consider explicitly re-raising using 'raise credentials_error from e' (raise-missing-from)
+app/services/auth_service.py:133:8: W0707: Consider explicitly re-raising using 'except Exception as exc' and 'raise credentials_error from exc' (raise-missing-from)
+app/services/auth_service.py:2:0: W0611: Unused Any imported from typing (unused-import)
+app/services/auth_service.py:8:0: W0611: Unused settings imported from app.config (unused-import)
+************* Module app.services.customer_service
+app/services/customer_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/customer_service.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/customer_service.py:10:30: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/customer_service.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/customer_service.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/customer_service.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/customer_service.py:28:33: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/customer_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/customer_service.py:33:33: W0622: Redefining built-in 'id' (redefined-builtin)
+************* Module app.services.receipt_service
+app/services/receipt_service.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+app/services/receipt_service.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/receipt_service.py:10:29: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/receipt_service.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/receipt_service.py:24:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/receipt_service.py:28:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/receipt_service.py:28:32: W0622: Redefining built-in 'id' (redefined-builtin)
+app/services/receipt_service.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+app/services/receipt_service.py:33:32: W0622: Redefining built-in 'id' (redefined-builtin)
+************* Module app.services.sale_item_service
+app/services/sale_item_service.py:1:0: C0305: Trailing newlines (trailing-newlines)
+app/services/sale_item_service.py:1:0: R0801: Similar lines in 2 files
+==app.repositories.category_repository:[40:60]
+==app.repositories.customer_repository:[36:56]
+        db.add(obj)
+        db.commit()
+        db.refresh(obj)
+        return obj
+
+    def update(self, db: Session, db_obj: Customer, data: dict) -> Customer:
+        """Update an existing customer."""
+        for field, value in data.items():
+            if value is not None:
+                setattr(db_obj, field, value)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
+
+    def delete(self, db: Session, db_obj: Customer) -> None:
+        """Delete a customer."""
+        db.delete(db_obj)
+        db.commit()
+
+ (duplicate-code)
+app/services/sale_item_service.py:1:0: R0801: Similar lines in 2 files
+==app.repositories.payment_repository:[34:55]
+==app.repositories.user_repository:[35:57]
+        db.add(obj)
+        db.commit()
+        db.refresh(obj)
+        return obj
+
+    def update(self, db: Session, db_obj: Payment, data: dict) -> Payment:
+        """Update an existing payment."""
+        for field, value in data.items():
+            if value is not None:
+                setattr(db_obj, field, value)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
+
+    def delete(self, db: Session, db_obj: Payment) -> None:
+        """Delete a payment."""
+        db.delete(db_obj)
+        db.commit()
+
+    def update_status(self, db: Session, payment_id: UUID, status: str) -> Payment:
+        """Update payment status.""" (duplicate-code)
+app/services/sale_item_service.py:1:0: R0801: Similar lines in 2 files
+==app.repositories.product_repository:[54:75]
+==app.repositories.receipt_repository:[35:55]
+        db.add(obj)
+        db.commit()
+        db.refresh(obj)
+        return obj
+
+    def update(self, db: Session, db_obj: Receipt, data: dict) -> Receipt:
+        """Update an existing receipt."""
+        for field, value in data.items():
+            if value is not None:
+                setattr(db_obj, field, value)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
+
+    def delete(self, db: Session, db_obj: Receipt) -> None:
+        """Delete a receipt."""
+        db.delete(db_obj)
+        db.commit()
+
+ (duplicate-code)
+app/services/sale_item_service.py:1:0: R0801: Similar lines in 2 files
+==app.repositories.sale_repository:[51:72]
+==app.repositories.supplier_repository:[32:52]
+        db.add(obj)
+        db.commit()
+        db.refresh(obj)
+        return obj
+
+    def update(self, db: Session, db_obj: Supplier, data: dict) -> Supplier:
+        """Update an existing supplier."""
+        for field, value in data.items():
+            if value is not None:
+                setattr(db_obj, field, value)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
+
+    def delete(self, db: Session, db_obj: Supplier) -> None:
+        """Delete a supplier."""
+        db.delete(db_obj)
+        db.commit()
+
+ (duplicate-code)
+app/services/sale_item_service.py:1:0: R0801: Similar lines in 2 files
+==app.repositories.sale_item_repository:[51:64]
+==app.repositories.supplier_repository:[39:52]
+        for field, value in data.items():
+            if value is not None:
+                setattr(db_obj, field, value)
+        db.commit()
+        db.refresh(db_obj)
+        return db_obj
+
+    def delete(self, db: Session, db_obj: SaleItem) -> None:
+        """Delete a sale item."""
+        db.delete(db_obj)
+        db.commit()
+
+ (duplicate-code)
+
+
+Report
+======
+1456 statements analysed.
+
+Statistics by type
+------------------
+
++---------+-------+-----------+-----------+------------+---------+
+|type     |number |old number |difference |%documented |%badname |
++=========+=======+===========+===========+============+=========+
+|module   |58     |58         |=          |5.17        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|class    |57     |57         |=          |15.79       |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|method   |84     |84         |=          |100.00      |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+|function |102    |102        |=          |5.88        |0.00     |
++---------+-------+-----------+-----------+------------+---------+
+
+
+
+External dependencies
+---------------------
+::
+
+    app 
+      \-config (app.core.security,app.routers.auth,app.services.auth_service)
+      \-core 
+      | \-security (app.services.auth_service)
+      \-database (app.models.category,app.models.customer,app.models.payment,app.models.product,app.models.receipt,app.models.sale,app.models.sale_item,app.models.supplier,app.models.user,app.routers.auth,app.routers.category,app.routers.customer,app.routers.payment,app.routers.product,app.routers.receipt,app.routers.sale,app.routers.sale_item,app.routers.supplier,app.routers.user)
+      \-dependencies (app.routers.category,app.routers.customer,app.routers.payment,app.routers.product,app.routers.receipt,app.routers.sale,app.routers.sale_item,app.routers.supplier,app.routers.user)
+      \-models 
+      | \-category (app.repositories.category_repository)
+      | \-customer (app.repositories.customer_repository)
+      | \-payment (app.repositories.payment_repository)
+      | \-product (app.repositories.product_repository)
+      | \-receipt (app.repositories.receipt_repository)
+      | \-sale (app.repositories.sale_repository)
+      | \-sale_item (app.repositories.sale_item_repository)
+      | \-supplier (app.repositories.supplier_repository)
+      | \-user (app.repositories.user_repository,app.services.auth_service)
+      \-repositories 
+      | \-category_repository (app.routers.category,app.services.category_service)
+      | \-customer_repository (app.routers.customer,app.services.customer_service)
+      | \-payment_repository (app.routers.payment)
+      | \-product_repository (app.routers.product,app.services.product_service)
+      | \-receipt_repository (app.routers.receipt,app.services.receipt_service)
+      | \-sale_item_repository (app.routers.sale_item)
+      | \-sale_repository (app.routers.sale,app.services.sale_service)
+      | \-supplier_repository (app.routers.supplier,app.services.supplier_service)
+      | \-user_repository (app.routers.user,app.services.auth_service,app.services.user_service)
+      \-schemas 
+      | \-category (app.routers.category,app.services.category_service)
+      | \-customer (app.routers.customer,app.services.customer_service)
+      | \-payment (app.routers.payment)
+      | \-product (app.routers.product,app.services.product_service)
+      | \-receipt (app.routers.receipt,app.services.receipt_service)
+      | \-sale (app.routers.sale,app.services.sale_service)
+      | \-sale_item (app.routers.sale_item)
+      | \-supplier (app.routers.supplier,app.services.supplier_service)
+      | \-user (app.routers.auth,app.routers.user,app.services.auth_service,app.services.user_service)
+      \-services 
+        \-auth_service (app.routers.auth)
+    fastapi (app.dependencies,app.main,app.routers.auth,app.routers.category,app.routers.customer,app.routers.payment,app.routers.product,app.routers.receipt,app.routers.sale,app.routers.sale_item,app.routers.supplier,app.routers.user,app.services.auth_service,app.services.category_service,app.services.customer_service,app.services.product_service,app.services.receipt_service,app.services.sale_service,app.services.supplier_service,app.services.user_service)
+      \-middleware 
+      | \-cors (app.main)
+      \-security (app.dependencies,app.routers.auth)
+    jwt (app.core.security)
+    passlib 
+      \-context (app.core.security)
+    pydantic (app.schemas.category,app.schemas.customer,app.schemas.payment,app.schemas.product,app.schemas.receipt,app.schemas.sale,app.schemas.sale_item,app.schemas.supplier,app.schemas.user)
+    pydantic_settings (app.config)
+    sqlalchemy (app.database,app.models.category,app.models.customer,app.models.payment,app.models.product,app.models.receipt,app.models.sale,app.models.sale_item,app.models.supplier,app.models.user)
+      \-dialects 
+      | \-postgresql (app.models.category,app.models.customer,app.models.payment,app.models.product,app.models.receipt,app.models.sale,app.models.sale_item,app.models.supplier,app.models.user)
+      \-orm (app.database,app.dependencies,app.models.category,app.models.customer,app.models.payment,app.models.product,app.models.receipt,app.models.sale,app.models.sale_item,app.models.supplier,app.models.user,app.repositories.category_repository,app.repositories.customer_repository,app.repositories.payment_repository,app.repositories.product_repository,app.repositories.receipt_repository,app.repositories.sale_item_repository,app.repositories.sale_repository,app.repositories.supplier_repository,app.repositories.user_repository,app.routers.auth,app.routers.category,app.routers.customer,app.routers.payment,app.routers.product,app.routers.receipt,app.routers.sale,app.routers.sale_item,app.routers.supplier,app.routers.user,app.services.auth_service,app.services.category_service,app.services.customer_service,app.services.product_service,app.services.receipt_service,app.services.sale_service,app.services.supplier_service,app.services.user_service)
+
+
+
+2407 lines have been analyzed
+
+Raw metrics
+-----------
+
++----------+-------+------+---------+-----------+
+|type      |number |%     |previous |difference |
++==========+=======+======+=========+===========+
+|code      |1732   |71.96 |NC       |NC         |
++----------+-------+------+---------+-----------+
+|docstring |118    |4.90  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|comment   |1      |0.04  |NC       |NC         |
++----------+-------+------+---------+-----------+
+|empty     |556    |23.10 |NC       |NC         |
++----------+-------+------+---------+-----------+
+
+
+
+Duplication
+-----------
+
++-------------------------+------+---------+-----------+
+|                         |now   |previous |difference |
++=========================+======+=========+===========+
+|nb duplicated lines      |0     |0        |0          |
++-------------------------+------+---------+-----------+
+|percent duplicated lines |0.000 |0.000    |=          |
++-------------------------+------+---------+-----------+
+
+
+
+Messages by category
+--------------------
+
++-----------+-------+---------+-----------+
+|type       |number |previous |difference |
++===========+=======+=========+===========+
+|convention |254    |254      |254        |
++-----------+-------+---------+-----------+
+|refactor   |24     |24       |24         |
++-----------+-------+---------+-----------+
+|warning    |84     |84       |84         |
++-----------+-------+---------+-----------+
+|error      |2      |2        |2          |
++-----------+-------+---------+-----------+
+
+
+
+% errors / warnings by module
+-----------------------------
+
++--------------------------------------+------+--------+---------+-----------+
+|module                                |error |warning |refactor |convention |
++======================================+======+========+=========+===========+
+|app.routers.sale_item                 |50.00 |5.95    |0.00     |4.33       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.sale                      |50.00 |5.95    |0.00     |4.33       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.product                   |0.00  |8.33    |0.00     |5.91       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.auth_service             |0.00  |8.33    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.user                      |0.00  |7.14    |0.00     |4.72       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.supplier                  |0.00  |5.95    |0.00     |4.33       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.receipt                   |0.00  |5.95    |0.00     |4.33       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.payment                   |0.00  |5.95    |0.00     |4.33       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.customer                  |0.00  |5.95    |0.00     |4.33       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.category                  |0.00  |5.95    |0.00     |4.33       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.user_service             |0.00  |3.57    |0.00     |2.36       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.supplier_service         |0.00  |3.57    |0.00     |2.36       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.sale_service             |0.00  |3.57    |0.00     |2.36       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.receipt_service          |0.00  |3.57    |0.00     |2.36       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.product_service          |0.00  |3.57    |0.00     |2.36       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.customer_service         |0.00  |3.57    |0.00     |2.36       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.category_service         |0.00  |3.57    |0.00     |2.36       |
++--------------------------------------+------+--------+---------+-----------+
+|app.core.security                     |0.00  |2.38    |0.00     |2.76       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.auth                      |0.00  |2.38    |0.00     |1.18       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.user                       |0.00  |1.19    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.supplier                   |0.00  |1.19    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.payment                    |0.00  |1.19    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.__init__                 |0.00  |1.19    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.main                              |0.00  |0.00    |41.67    |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.services.sale_item_service        |0.00  |0.00    |20.83    |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.receipt                    |0.00  |0.00    |4.17     |1.18       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.sale_item                  |0.00  |0.00    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.sale                       |0.00  |0.00    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.product                    |0.00  |0.00    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.customer                   |0.00  |0.00    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.category                   |0.00  |0.00    |4.17     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.user                      |0.00  |0.00    |0.00     |3.54       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.supplier                  |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.sale_item                 |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.sale                      |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.receipt                   |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.product                   |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.payment                   |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.customer                  |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.category                  |0.00  |0.00    |0.00     |1.97       |
++--------------------------------------+------+--------+---------+-----------+
+|app.database                          |0.00  |0.00    |0.00     |1.18       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.user_repository      |0.00  |0.00    |0.00     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.config                            |0.00  |0.00    |0.00     |0.79       |
++--------------------------------------+------+--------+---------+-----------+
+|app.schemas.__init__                  |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.routers.__init__                  |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.supplier_repository  |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.sale_repository      |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.sale_item_repository |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.receipt_repository   |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.product_repository   |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.payment_repository   |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.customer_repository  |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.category_repository  |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.repositories.__init__             |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.models.__init__                   |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.dependencies                      |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app.core.__init__                     |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+|app                                   |0.00  |0.00    |0.00     |0.39       |
++--------------------------------------+------+--------+---------+-----------+
+
+
+
+Messages
+--------
+
++---------------------------+------------+
+|message id                 |occurrences |
++===========================+============+
+|missing-function-docstring |96          |
++---------------------------+------------+
+|missing-module-docstring   |55          |
++---------------------------+------------+
+|line-too-long              |50          |
++---------------------------+------------+
+|unused-argument            |48          |
++---------------------------+------------+
+|missing-class-docstring    |48          |
++---------------------------+------------+
+|redefined-builtin          |21          |
++---------------------------+------------+
+|consider-using-from-import |10          |
++---------------------------+------------+
+|too-few-public-methods     |9           |
++---------------------------+------------+
+|unused-import              |7           |
++---------------------------+------------+
+|raise-missing-from         |7           |
++---------------------------+------------+
+|duplicate-code             |5           |
++---------------------------+------------+
+|trailing-newlines          |4           |
++---------------------------+------------+
+|undefined-variable         |2           |
++---------------------------+------------+
+|import-self                |1           |
++---------------------------+------------+
+|import-outside-toplevel    |1           |
++---------------------------+------------+
+
+
+
+
+------------------------------------------------------------------
+Your code has been rated at 7.45/10 (previous run: 7.45/10, +0.00)
+

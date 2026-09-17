@@ -1,0 +1,110 @@
+"""Supplier router module."""
+
+from typing import List
+from uuid import UUID
+
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
+
+from app.database import get_db
+from app.dependencies import get_current_user, require_admin, require_inventory_manager
+from app.models.user import User
+from app.repositories.supplier_repository import supplier_repository
+from app.schemas.supplier import SupplierCreate, SupplierRead, SupplierUpdate
+
+router = APIRouter(prefix="/suppliers", tags=["suppliers"])
+
+
+@router.get("/", response_model=List[SupplierRead])
+def get_suppliers(
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db),
+    _current_user: User = Depends(get_current_user),
+):
+    """Get all suppliers with pagination."""
+    return supplier_repository.get_all(db, skip=skip, limit=limit)
+
+
+@router.get("/{supplier_id}", response_model=SupplierRead)
+def get_supplier(
+    supplier_id: UUID,
+    db: Session = Depends(get_db),
+    _current_user: User = Depends(get_current_user),
+):
+    """Get a specific supplier by ID."""
+    supplier = supplier_repository.get(db, supplier_id)
+    if not supplier:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Supplier not found"
+        )
+    return supplier
+
+
+@router.get("/email/{email}", response_model=SupplierRead)
+def get_supplier_by_email(
+    email: str,
+    db: Session = Depends(get_db),
+    _current_user: User = Depends(get_current_user),
+):
+    """Get a supplier by email."""
+    supplier = supplier_repository.get_by_email(db, email)
+    if not supplier:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Supplier not found"
+        )
+    return supplier
+
+
+@router.post("/", response_model=SupplierRead, status_code=status.HTTP_201_CREATED)
+def create_supplier(
+    data: SupplierCreate,
+    db: Session = Depends(get_db),
+    _current_user: User = Depends(require_inventory_manager),
+):
+    """Create a new supplier. Requires inventory manager or admin role."""
+    # Check if email already exists
+    if data.email:
+        existing = supplier_repository.get_by_email(db, data.email)
+        if existing:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Email already registered"
+            )
+    return supplier_repository.create(db, data.model_dump())
+
+
+@router.put("/{supplier_id}", response_model=SupplierRead)
+def update_supplier(
+    supplier_id: UUID,
+    data: SupplierUpdate,
+    db: Session = Depends(get_db),
+    _current_user: User = Depends(require_inventory_manager),
+):
+    """Update an existing supplier. Requires inventory manager or admin role."""
+    supplier = supplier_repository.get(db, supplier_id)
+    if not supplier:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Supplier not found"
+        )
+    return supplier_repository.update(db, supplier, data.model_dump(exclude_unset=True))
+
+
+@router.delete("/{supplier_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_supplier(
+    supplier_id: UUID,
+    db: Session = Depends(get_db),
+    _current_user: User = Depends(require_admin),
+):
+    """Delete a supplier. Requires admin role."""
+    supplier = supplier_repository.get(db, supplier_id)
+    if not supplier:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Supplier not found"
+        )
+    supplier_repository.delete(db, supplier)
+    return None
