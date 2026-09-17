@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment
+.env
+.env.local
+
+# Generated reports
+pylint_report.*
+pytest_report.*
+htmlcov/
+.coverage
+coverage.xml
+.git_backup_*/
+.fix*_backup_*/
+.fix*_*/
+.warn_bak_*/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
