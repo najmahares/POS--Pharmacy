@@ -36,3 +36,8 @@ coverage.xml
 .idea/
 .vscode/
 .fix*
+
+# Secrets and generated reports
+.env
+pylint_report.json
+pytest_report.json
