@@ -1,4 +1,3 @@
-
 from uuid import UUID
 
 from fastapi import HTTPException, status
@@ -13,8 +12,7 @@ def get_supplier(db: Session, supplier_id: UUID):
     supplier = supplier_repository.get(db, supplier_id)
     if not supplier:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Supplier not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found"
         )
     return supplier
 

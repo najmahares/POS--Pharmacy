@@ -22,4 +22,3 @@ class Category(Base):
     parent = relationship("Category", remote_side=[id], back_populates="children")
     children = relationship("Category", back_populates="parent")
     products = relationship("Product", back_populates="category")
-

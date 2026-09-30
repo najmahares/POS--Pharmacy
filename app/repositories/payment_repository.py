@@ -1,4 +1,3 @@
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -13,19 +12,19 @@ class PaymentRepository:
         """Initialize PaymentRepository."""
         self.model = Payment
 
-    def get(self, db: Session, payment_id: UUID) -> Optional[Payment]:
+    def get(self, db: Session, payment_id: UUID) -> Payment | None:
         """Get a payment by UUID."""
         return db.get(Payment, payment_id)
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Payment]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Payment]:
         """Get all payments with pagination."""
         return db.query(Payment).offset(skip).limit(limit).all()
 
-    def get_by_sale(self, db: Session, sale_id: UUID) -> List[Payment]:
+    def get_by_sale(self, db: Session, sale_id: UUID) -> list[Payment]:
         """Get all payments for a sale."""
         return db.query(Payment).filter(Payment.sale_id == sale_id).all()
 
-    def get_by_status(self, db: Session, status: str) -> List[Payment]:
+    def get_by_status(self, db: Session, status: str) -> list[Payment]:
         """Get payments by status."""
         return db.query(Payment).filter(Payment.payment_status == status).all()
 
@@ -62,4 +61,3 @@ class PaymentRepository:
 
 
 payment_repository = PaymentRepository()
-

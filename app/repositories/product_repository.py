@@ -1,6 +1,4 @@
-
 from datetime import date
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -15,37 +13,39 @@ class ProductRepository:
         """Initialize ProductRepository."""
         self.model = Product
 
-    def get(self, db: Session, product_id: UUID) -> Optional[Product]:
+    def get(self, db: Session, product_id: UUID) -> Product | None:
         """Get a product by UUID."""
         return db.get(Product, product_id)
 
-    def get_by_sku(self, db: Session, sku: str) -> Optional[Product]:
+    def get_by_sku(self, db: Session, sku: str) -> Product | None:
         """Get a product by SKU."""
         return db.query(Product).filter(Product.sku == sku).first()
 
-    def get_by_barcode(self, db: Session, barcode: str) -> Optional[Product]:
+    def get_by_barcode(self, db: Session, barcode: str) -> Product | None:
         """Get a product by barcode."""
         return db.query(Product).filter(Product.barcode == barcode).first()
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Product]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Product]:
         """Get all products with pagination."""
         return db.query(Product).offset(skip).limit(limit).all()
 
-    def get_by_category(self, db: Session, category_id: UUID) -> List[Product]:
+    def get_by_category(self, db: Session, category_id: UUID) -> list[Product]:
         """Get all products in a category."""
         return db.query(Product).filter(Product.category_id == category_id).all()
 
-    def get_by_supplier(self, db: Session, supplier_id: UUID) -> List[Product]:
+    def get_by_supplier(self, db: Session, supplier_id: UUID) -> list[Product]:
         """Get all products from a supplier."""
         return db.query(Product).filter(Product.supplier_id == supplier_id).all()
 
-    def get_low_stock(self, db: Session) -> List[Product]:
+    def get_low_stock(self, db: Session) -> list[Product]:
         """Get products with low stock (quantity <= reorder_level)."""
-        return db.query(Product).filter(
-            Product.quantity_in_stock <= Product.reorder_level
-        ).all()
+        return (
+            db.query(Product)
+            .filter(Product.quantity_in_stock <= Product.reorder_level)
+            .all()
+        )
 
-    def get_expired_products(self, db: Session) -> List[Product]:
+    def get_expired_products(self, db: Session) -> list[Product]:
         """Get expired products."""
         return db.query(Product).filter(Product.expiry_date < date.today()).all()
 
@@ -82,4 +82,3 @@ class ProductRepository:
 
 
 product_repository = ProductRepository()
-

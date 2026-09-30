@@ -34,6 +34,7 @@ def test_creating_product_without_name(client, auth_headers):
     response = client.post("/products", json=product_data, headers=auth_headers)
     assert response.status_code == 422
 
+
 def test_update_product(client, auth_headers):
 
     product_data = {
@@ -48,16 +49,16 @@ def test_update_product(client, auth_headers):
     assert create_response.status_code == 201
     product_id = create_response.json()["id"]
 
-    
     updated_data = {
         "name": "Updated Product Name",
         "price": "29.99",
     }
-    update_response = client.put(f"/products/{product_id}", json=updated_data, headers=auth_headers)
+    update_response = client.put(
+        f"/products/{product_id}", json=updated_data, headers=auth_headers
+    )
     assert update_response.status_code == 200
     assert update_response.json()["name"] == updated_data["name"]
-    assert update_response.json()["price"] == updated_data["price"] 
-
+    assert update_response.json()["price"] == updated_data["price"]
 
     def test_delete_product(client, auth_headers):
         product_data = {
@@ -68,15 +69,14 @@ def test_update_product(client, auth_headers):
             "quantity_in_stock": 100,
             "reorder_level": 10,
         }
-        create_response = client.post("/products", json=product_data, headers=auth_headers)
+        create_response = client.post(
+            "/products", json=product_data, headers=auth_headers
+        )
         assert create_response.status_code == 201
         product_id = create_response.json()["id"]
 
-        
         delete_response = client.delete(f"/products/{product_id}", headers=auth_headers)
         assert delete_response.status_code == 204
 
-        
         get_response = client.get(f"/products/{product_id}", headers=auth_headers)
         assert get_response.status_code == 404
-

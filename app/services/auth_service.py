@@ -1,14 +1,18 @@
 """Authentication service module."""
 
 from datetime import datetime
-from typing import Optional
 from uuid import UUID
 
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
-from app.core.security import (create_access_token, create_refresh_token,
-                               decode_access_token, hash_password, verify_hash)
+from app.core.security import (
+    create_access_token,
+    create_refresh_token,
+    decode_access_token,
+    hash_password,
+    verify_hash,
+)
 from app.models.user import User
 from app.repositories.user_repository import user_repository
 from app.schemas.user import TokenResponse, UserCreate
@@ -18,13 +22,11 @@ def register(db: Session, data: UserCreate) -> User:
     """Register a new user."""
     if user_repository.get_by_username(db, data.username):
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Username already taken"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Username already taken"
         )
     if user_repository.get_by_email(db, data.email):
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Email already registered"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered"
         )
 
     values = data.model_dump(exclude={"password"})
@@ -39,13 +41,13 @@ def authenticate(db: Session, username: str, password: str) -> TokenResponse:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
-            headers={"WWW-Authenticate": "Bearer"}
+            headers={"WWW-Authenticate": "Bearer"},
         )
 
     if not user.is_active:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Your account is inactive. Please contact administrator."
+            detail="Your account is inactive. Please contact administrator.",
         )
 
     user.last_login = datetime.now()
@@ -66,8 +68,8 @@ def authenticate(db: Session, username: str, password: str) -> TokenResponse:
             "email": user.email,
             "role": user.role,
             "first_name": user.first_name,
-            "last_name": user.last_name
-        }
+            "last_name": user.last_name,
+        },
     )
 
 
@@ -88,8 +90,7 @@ def refresh_access_token(db: Session, refresh_token: str) -> TokenResponse:
         user = user_repository.get(db, user_id)
         if not user or not user.is_active:
             raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid refresh token"
+                status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid refresh token"
             )
 
         access_token = create_access_token(str(user.id))
@@ -106,13 +107,12 @@ def refresh_access_token(db: Session, refresh_token: str) -> TokenResponse:
                 "email": user.email,
                 "role": user.role,
                 "first_name": user.first_name,
-                "last_name": user.last_name
-            }
+                "last_name": user.last_name,
+            },
         )
     except Exception as exc:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Invalid refresh token"
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid refresh token"
         ) from exc
 
 

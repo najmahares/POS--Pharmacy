@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime, timedelta, timezone
-from typing import Any, Dict
+from typing import Any
 
 import jwt
 from passlib.context import CryptContext
@@ -9,11 +9,14 @@ from app.config import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
+
 def verify_hash(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
+
 
 def create_access_token(user_id: str, expires_delta: timedelta = None) -> str:
     if expires_delta is None:
@@ -26,18 +29,13 @@ def create_access_token(user_id: str, expires_delta: timedelta = None) -> str:
         "iat": datetime.now(timezone.utc),
         "jti": uuid.uuid4().hex,
     }
-    return jwt.encode(
-        payload,
-        settings.SECRET_KEY,
-        algorithm=settings.ALGORITHM
-    )
+    return jwt.encode(payload, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
 
-def decode_access_token(token: str) -> Dict[str, Any]:
+
+def decode_access_token(token: str) -> dict[str, Any]:
     try:
         payload = jwt.decode(
-            token,
-            settings.SECRET_KEY,
-            algorithms=[settings.ALGORITHM]
+            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
         )
         return payload
     except jwt.ExpiredSignatureError:
@@ -45,8 +43,11 @@ def decode_access_token(token: str) -> Dict[str, Any]:
     except jwt.InvalidTokenError:
         raise ValueError("Invalid token")
 
+
 def create_refresh_token(user_id: str) -> str:
-    expire = datetime.now(timezone.utc) + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
+    expire = datetime.now(timezone.utc) + timedelta(
+        days=settings.REFRESH_TOKEN_EXPIRE_DAYS
+    )
     payload = {
         "sub": str(user_id),
         "exp": expire,
@@ -54,15 +55,11 @@ def create_refresh_token(user_id: str) -> str:
         "type": "refresh",
         "jti": uuid.uuid4().hex,
     }
-    return jwt.encode(
-        payload,
-        settings.SECRET_KEY,
-        algorithm=settings.ALGORITHM
-    )
+    return jwt.encode(payload, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
 
-def decode_refresh_token(token: str) -> Dict[str, Any]:
+
+def decode_refresh_token(token: str) -> dict[str, Any]:
     payload = decode_access_token(token)
     if payload.get("type") != "refresh":
         raise ValueError("Invalid refresh token")
     return payload
-

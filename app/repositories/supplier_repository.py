@@ -1,6 +1,3 @@
-
-
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -15,15 +12,15 @@ class SupplierRepository:
         """Initialize SupplierRepository."""
         self.model = Supplier
 
-    def get(self, db: Session, supplier_id: UUID) -> Optional[Supplier]:
+    def get(self, db: Session, supplier_id: UUID) -> Supplier | None:
         """Get a supplier by UUID."""
         return db.get(Supplier, supplier_id)
 
-    def get_by_email(self, db: Session, email: str) -> Optional[Supplier]:
+    def get_by_email(self, db: Session, email: str) -> Supplier | None:
         """Get a supplier by email."""
         return db.query(Supplier).filter(Supplier.email == email).first()
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Supplier]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Supplier]:
         """Get all suppliers with pagination."""
         return db.query(Supplier).offset(skip).limit(limit).all()
 
@@ -51,4 +48,3 @@ class SupplierRepository:
 
 
 supplier_repository = SupplierRepository()
-

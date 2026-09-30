@@ -1,25 +1,23 @@
 import uuid
-from datetime import datetime, date, timedelta
+from datetime import date, datetime, timedelta
 
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, event
+from sqlalchemy.dialects.postgresql import UUID as PG_UUID
+from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from app.main import app
+from app.core.security import create_access_token, hash_password
 from app.database import Base, get_db
-from app.models.user import User
+from app.main import app
 from app.models.category import Category
-from app.models.product import Product
 from app.models.customer import Customer
-from app.models.supplier import Supplier
+from app.models.product import Product
 from app.models.sale import Sale
-from app.core.security import hash_password, create_access_token
-
-
-from sqlalchemy.dialects.postgresql import UUID as PG_UUID
-from sqlalchemy.ext.compiler import compiles
+from app.models.supplier import Supplier
+from app.models.user import User
 
 
 @compiles(PG_UUID, "sqlite")
@@ -208,7 +206,9 @@ def product(db_session, category, supplier):
         category_id=category.id,
         supplier_id=supplier.id,
     )
-    db_session.add(p); db_session.commit(); db_session.refresh(p)
+    db_session.add(p)
+    db_session.commit()
+    db_session.refresh(p)
     return p
 
 
@@ -226,7 +226,9 @@ def rx_product(db_session, category):
         expiry_date=date.today() + timedelta(days=180),
         category_id=category.id,
     )
-    db_session.add(p); db_session.commit(); db_session.refresh(p)
+    db_session.add(p)
+    db_session.commit()
+    db_session.refresh(p)
     return p
 
 

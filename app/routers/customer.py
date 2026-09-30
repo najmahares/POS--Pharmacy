@@ -1,4 +1,3 @@
-from typing import List
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -12,7 +11,8 @@ from app.schemas.customer import CustomerCreate, CustomerRead, CustomerUpdate
 
 router = APIRouter(prefix="/customers", tags=["customers"])
 
-@router.get("/", response_model=List[CustomerRead])
+
+@router.get("/", response_model=list[CustomerRead])
 def get_customers(
     skip: int = 0,
     limit: int = 100,
@@ -20,6 +20,7 @@ def get_customers(
     _current_user: User = Depends(get_current_user),
 ):
     return customer_repository.get_all(db, skip=skip, limit=limit)
+
 
 @router.get("/{customer_id}", response_model=CustomerRead)
 def get_customer(
@@ -30,10 +31,10 @@ def get_customer(
     customer = customer_repository.get(db, customer_id)
     if not customer:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Customer not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
         )
     return customer
+
 
 @router.get("/email/{email}", response_model=CustomerRead)
 def get_customer_by_email(
@@ -44,10 +45,10 @@ def get_customer_by_email(
     customer = customer_repository.get_by_email(db, email)
     if not customer:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Customer not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
         )
     return customer
+
 
 @router.get("/medical-record/{medical_record_number}", response_model=CustomerRead)
 def get_customer_by_medical_record(
@@ -58,10 +59,10 @@ def get_customer_by_medical_record(
     customer = customer_repository.get_by_medical_record(db, medical_record_number)
     if not customer:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Customer not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
         )
     return customer
+
 
 @router.post("/", response_model=CustomerRead, status_code=status.HTTP_201_CREATED)
 def create_customer(
@@ -74,16 +75,19 @@ def create_customer(
         if existing:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Email already registered"
+                detail="Email already registered",
             )
     if data.medical_record_number:
-        existing = customer_repository.get_by_medical_record(db, data.medical_record_number)
+        existing = customer_repository.get_by_medical_record(
+            db, data.medical_record_number
+        )
         if existing:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Medical record number already exists"
+                detail="Medical record number already exists",
             )
     return customer_repository.create(db, data.model_dump())
+
 
 @router.put("/{customer_id}", response_model=CustomerRead)
 def update_customer(
@@ -95,10 +99,10 @@ def update_customer(
     customer = customer_repository.get(db, customer_id)
     if not customer:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Customer not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
         )
     return customer_repository.update(db, customer, data.model_dump(exclude_unset=True))
+
 
 @router.delete("/{customer_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_customer(
@@ -109,8 +113,6 @@ def delete_customer(
     customer = customer_repository.get(db, customer_id)
     if not customer:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Customer not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Customer not found"
         )
     customer_repository.delete(db, customer)
-    return None

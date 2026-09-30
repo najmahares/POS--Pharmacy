@@ -1,6 +1,3 @@
-
-
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -15,23 +12,23 @@ class CategoryRepository:
         """Initialize CategoryRepository."""
         self.model = Category
 
-    def get(self, db: Session, category_id: UUID) -> Optional[Category]:
+    def get(self, db: Session, category_id: UUID) -> Category | None:
         """Get a category by UUID."""
         return db.get(Category, category_id)
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Category]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Category]:
         """Get all categories with pagination."""
         return db.query(Category).offset(skip).limit(limit).all()
 
-    def get_by_name(self, db: Session, name: str) -> Optional[Category]:
+    def get_by_name(self, db: Session, name: str) -> Category | None:
         """Get a category by name (case-insensitive)."""
         return db.query(Category).filter(Category.name.ilike(name)).first()
 
-    def get_root_categories(self, db: Session) -> List[Category]:
+    def get_root_categories(self, db: Session) -> list[Category]:
         """Get all root categories (categories with no parent)."""
         return db.query(Category).filter(Category.parent_id.is_(None)).all()
 
-    def get_subcategories(self, db: Session, parent_id: UUID) -> List[Category]:
+    def get_subcategories(self, db: Session, parent_id: UUID) -> list[Category]:
         """Get all subcategories of a parent category."""
         return db.query(Category).filter(Category.parent_id == parent_id).all()
 
@@ -59,4 +56,3 @@ class CategoryRepository:
 
 
 category_repository = CategoryRepository()
-

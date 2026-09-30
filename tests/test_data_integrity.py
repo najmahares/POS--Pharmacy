@@ -1,5 +1,4 @@
 import uuid
-import pytest
 from datetime import datetime
 
 
@@ -27,7 +26,7 @@ def test_duplicate_sku_case_insensitive(client, inventory_headers, product):
         "/products/",
         json={
             "name": "Duplicate",
-            "sku": product.sku,           
+            "sku": product.sku,
             "price": "1.00",
             "quantity_in_stock": 1,
             "reorder_level": 1,
@@ -42,8 +41,10 @@ def test_sale_number_must_be_unique(client, auth_headers):
     p = {
         "sale_number": f"UNIQ-{uuid.uuid4().hex[:6]}",
         "sale_date": datetime.utcnow().isoformat(),
-        "subtotal": "0", "tax_amount": "0",
-        "discount_amount": "0", "total_amount": "0",
+        "subtotal": "0",
+        "tax_amount": "0",
+        "discount_amount": "0",
+        "total_amount": "0",
         "status": "pending",
     }
     assert client.post("/sales/", json=p, headers=auth_headers).status_code == 201
@@ -68,13 +69,15 @@ def test_sale_item_requires_valid_sale_and_product(client, auth_headers):
     r = client.post(
         "/sale-items/",
         json={
-            "quantity": "1", "unit_price": "1.00",
-            "discount_amount": "0", "tax_amount": "0",
+            "quantity": "1",
+            "unit_price": "1.00",
+            "discount_amount": "0",
+            "tax_amount": "0",
             "total_price": "1.00",
             "sale_id": str(uuid.uuid4()),
             "product_id": str(uuid.uuid4()),
         },
         headers=auth_headers,
     )
-   
+
     assert r.status_code in (400, 404, 422)

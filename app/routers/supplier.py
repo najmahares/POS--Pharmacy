@@ -1,4 +1,3 @@
-from typing import List
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -12,7 +11,8 @@ from app.schemas.supplier import SupplierCreate, SupplierRead, SupplierUpdate
 
 router = APIRouter(prefix="/suppliers", tags=["suppliers"])
 
-@router.get("/", response_model=List[SupplierRead])
+
+@router.get("/", response_model=list[SupplierRead])
 def get_suppliers(
     skip: int = 0,
     limit: int = 100,
@@ -20,6 +20,7 @@ def get_suppliers(
     _current_user: User = Depends(get_current_user),
 ):
     return supplier_repository.get_all(db, skip=skip, limit=limit)
+
 
 @router.get("/{supplier_id}", response_model=SupplierRead)
 def get_supplier(
@@ -30,10 +31,10 @@ def get_supplier(
     supplier = supplier_repository.get(db, supplier_id)
     if not supplier:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Supplier not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found"
         )
     return supplier
+
 
 @router.get("/email/{email}", response_model=SupplierRead)
 def get_supplier_by_email(
@@ -44,10 +45,10 @@ def get_supplier_by_email(
     supplier = supplier_repository.get_by_email(db, email)
     if not supplier:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Supplier not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found"
         )
     return supplier
+
 
 @router.post("/", response_model=SupplierRead, status_code=status.HTTP_201_CREATED)
 def create_supplier(
@@ -60,9 +61,10 @@ def create_supplier(
         if existing:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Email already registered"
+                detail="Email already registered",
             )
     return supplier_repository.create(db, data.model_dump())
+
 
 @router.put("/{supplier_id}", response_model=SupplierRead)
 def update_supplier(
@@ -74,10 +76,10 @@ def update_supplier(
     supplier = supplier_repository.get(db, supplier_id)
     if not supplier:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Supplier not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found"
         )
     return supplier_repository.update(db, supplier, data.model_dump(exclude_unset=True))
+
 
 @router.delete("/{supplier_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_supplier(
@@ -88,8 +90,6 @@ def delete_supplier(
     supplier = supplier_repository.get(db, supplier_id)
     if not supplier:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Supplier not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found"
         )
     supplier_repository.delete(db, supplier)
-    return None

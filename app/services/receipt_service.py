@@ -14,8 +14,7 @@ def get_receipt(db: Session, receipt_id: UUID):
     receipt = receipt_repository.get(db, receipt_id)
     if not receipt:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Receipt not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Receipt not found"
         )
     return receipt
 

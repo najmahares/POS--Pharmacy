@@ -1,6 +1,4 @@
-
 from datetime import date
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -15,34 +13,37 @@ class SaleRepository:
         """Initialize SaleRepository."""
         self.model = Sale
 
-    def get(self, db: Session, sale_id: UUID) -> Optional[Sale]:
+    def get(self, db: Session, sale_id: UUID) -> Sale | None:
         """Get a sale by UUID."""
         return db.get(Sale, sale_id)
 
-    def get_by_sale_number(self, db: Session, sale_number: str) -> Optional[Sale]:
+    def get_by_sale_number(self, db: Session, sale_number: str) -> Sale | None:
         """Get a sale by sale number."""
         return db.query(Sale).filter(Sale.sale_number == sale_number).first()
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Sale]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Sale]:
         """Get all sales with pagination."""
         return db.query(Sale).offset(skip).limit(limit).all()
 
-    def get_by_customer(self, db: Session, customer_id: UUID) -> List[Sale]:
+    def get_by_customer(self, db: Session, customer_id: UUID) -> list[Sale]:
         """Get all sales by customer."""
         return db.query(Sale).filter(Sale.customer_id == customer_id).all()
 
-    def get_by_user(self, db: Session, user_id: UUID) -> List[Sale]:
+    def get_by_user(self, db: Session, user_id: UUID) -> list[Sale]:
         """Get all sales by user."""
         return db.query(Sale).filter(Sale.user_id == user_id).all()
 
-    def get_by_date_range(self, db: Session, start_date: date, end_date: date) -> List[Sale]:
+    def get_by_date_range(
+        self, db: Session, start_date: date, end_date: date
+    ) -> list[Sale]:
         """Get sales within a date range."""
-        return db.query(Sale).filter(
-            Sale.sale_date >= start_date,
-            Sale.sale_date <= end_date
-        ).all()
+        return (
+            db.query(Sale)
+            .filter(Sale.sale_date >= start_date, Sale.sale_date <= end_date)
+            .all()
+        )
 
-    def get_by_status(self, db: Session, status: str) -> List[Sale]:
+    def get_by_status(self, db: Session, status: str) -> list[Sale]:
         """Get sales by status."""
         return db.query(Sale).filter(Sale.status == status).all()
 
@@ -79,4 +80,3 @@ class SaleRepository:
 
 
 sale_repository = SaleRepository()
-

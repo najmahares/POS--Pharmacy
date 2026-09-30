@@ -1,8 +1,6 @@
 import uuid
 from datetime import date, datetime, timedelta
 
-import pytest
-
 
 def _sale(client, headers, subtotal="10.00", tax="1.00", status="pending"):
     return client.post(
@@ -75,6 +73,7 @@ def test_total_price_equals_quantity_times_unit(client, auth_headers, product):
     r = client.post("/sale-items/", json=payload, headers=auth_headers)
     assert r.status_code == 201
     from decimal import Decimal
+
     assert Decimal(str(r.json()["total_price"])) == Decimal("29.97")
 
 
@@ -87,6 +86,7 @@ def test_fractional_quantity_for_liquids(client, auth_headers, product):
     )
     assert r.status_code == 201
     from decimal import Decimal
+
     assert Decimal(str(r.json()["quantity"])) == Decimal("0.5")
 
 
@@ -121,15 +121,21 @@ def test_negative_price_rejected(client, auth_headers, product):
 
 
 def test_rx_product_can_be_sold_with_prescription(client, auth_headers, rx_product):
-    sale = client.post("/sales/", json={
-        "sale_number": f"SAL-{uuid.uuid4().hex[:8]}",
-        "sale_date": datetime.utcnow().isoformat(),
-        "subtotal": "10.00", "tax_amount": "0",
-        "discount_amount": "0", "total_amount": "10.00",
-        "status": "pending",
-        "prescription_number": "RX-12345",
-        "prescribing_doctor": "Dr. Strange",
-    }, headers=auth_headers).json()
+    sale = client.post(
+        "/sales/",
+        json={
+            "sale_number": f"SAL-{uuid.uuid4().hex[:8]}",
+            "sale_date": datetime.utcnow().isoformat(),
+            "subtotal": "10.00",
+            "tax_amount": "0",
+            "discount_amount": "0",
+            "total_amount": "10.00",
+            "status": "pending",
+            "prescription_number": "RX-12345",
+            "prescribing_doctor": "Dr. Strange",
+        },
+        headers=auth_headers,
+    ).json()
     assert sale.get("prescription_number") == "RX-12345"
     r = client.post(
         "/sale-items/",
@@ -141,6 +147,7 @@ def test_rx_product_can_be_sold_with_prescription(client, auth_headers, rx_produ
 
 def test_expired_product_listing(client, inventory_headers, db_session, category):
     from app.models.product import Product
+
     expired = Product(
         id=uuid.uuid4(),
         name="Old Aspirin",
@@ -160,8 +167,11 @@ def test_expired_product_listing(client, inventory_headers, db_session, category
     assert str(expired.id) in ids
 
 
-def test_low_stock_endpoint_returns_only_low(client, inventory_headers, db_session, category, product):
+def test_low_stock_endpoint_returns_only_low(
+    client, inventory_headers, db_session, category, product
+):
     from app.models.product import Product
+
     low = Product(
         id=uuid.uuid4(),
         name="Low Item",

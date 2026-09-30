@@ -1,5 +1,3 @@
-
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -14,19 +12,21 @@ class ReceiptRepository:
         """Initialize ReceiptRepository."""
         self.model = Receipt
 
-    def get(self, db: Session, receipt_id: UUID) -> Optional[Receipt]:
+    def get(self, db: Session, receipt_id: UUID) -> Receipt | None:
         """Get a receipt by UUID."""
         return db.get(Receipt, receipt_id)
 
-    def get_by_receipt_number(self, db: Session, receipt_number: str) -> Optional[Receipt]:
+    def get_by_receipt_number(self, db: Session, receipt_number: str) -> Receipt | None:
         """Get a receipt by receipt number."""
-        return db.query(Receipt).filter(Receipt.receipt_number == receipt_number).first()
+        return (
+            db.query(Receipt).filter(Receipt.receipt_number == receipt_number).first()
+        )
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Receipt]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Receipt]:
         """Get all receipts with pagination."""
         return db.query(Receipt).offset(skip).limit(limit).all()
 
-    def get_by_sale(self, db: Session, sale_id: UUID) -> Optional[Receipt]:
+    def get_by_sale(self, db: Session, sale_id: UUID) -> Receipt | None:
         """Get a receipt by sale ID."""
         return db.query(Receipt).filter(Receipt.sale_id == sale_id).first()
 
@@ -54,4 +54,3 @@ class ReceiptRepository:
 
 
 receipt_repository = ReceiptRepository()
-

@@ -1,4 +1,3 @@
-from typing import List
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -12,7 +11,8 @@ from app.schemas.product import ProductCreate, ProductRead, ProductUpdate
 
 router = APIRouter(prefix="/products", tags=["products"])
 
-@router.get("/", response_model=List[ProductRead])
+
+@router.get("/", response_model=list[ProductRead])
 def get_products(
     skip: int = 0,
     limit: int = 100,
@@ -20,6 +20,7 @@ def get_products(
     _current_user: User = Depends(get_current_user),
 ):
     return product_repository.get_all(db, skip=skip, limit=limit)
+
 
 @router.post("/", response_model=ProductRead, status_code=status.HTTP_201_CREATED)
 def create_product(
@@ -30,24 +31,26 @@ def create_product(
     existing = product_repository.get_by_sku(db, data.sku)
     if existing:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="SKU already registered"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="SKU already registered"
         )
     return product_repository.create(db, data.model_dump())
 
-@router.get("/low-stock", response_model=List[ProductRead])
+
+@router.get("/low-stock", response_model=list[ProductRead])
 def get_low_stock_products(
     db: Session = Depends(get_db),
     _current_user: User = Depends(require_inventory_manager),
 ):
     return product_repository.get_low_stock(db)
 
-@router.get("/expired", response_model=List[ProductRead])
+
+@router.get("/expired", response_model=list[ProductRead])
 def get_expired_products(
     db: Session = Depends(get_db),
     _current_user: User = Depends(require_inventory_manager),
 ):
     return product_repository.get_expired_products(db)
+
 
 @router.get("/sku/{sku}", response_model=ProductRead)
 def get_product_by_sku(
@@ -58,18 +61,19 @@ def get_product_by_sku(
     product = product_repository.get_by_sku(db, sku)
     if not product:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Product not found"
         )
     return product
 
-@router.get("/category/{category_id}", response_model=List[ProductRead])
+
+@router.get("/category/{category_id}", response_model=list[ProductRead])
 def get_products_by_category(
     category_id: UUID,
     db: Session = Depends(get_db),
     _current_user: User = Depends(get_current_user),
 ):
     return product_repository.get_by_category(db, category_id)
+
 
 @router.get("/{product_id}", response_model=ProductRead)
 def get_product(
@@ -80,10 +84,10 @@ def get_product(
     product = product_repository.get(db, product_id)
     if not product:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Product not found"
         )
     return product
+
 
 @router.put("/{product_id}", response_model=ProductRead)
 def update_product(
@@ -95,10 +99,10 @@ def update_product(
     product = product_repository.get(db, product_id)
     if not product:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Product not found"
         )
     return product_repository.update(db, product, data.model_dump(exclude_unset=True))
+
 
 @router.delete("/{product_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_product(
@@ -109,8 +113,6 @@ def delete_product(
     product = product_repository.get(db, product_id)
     if not product:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Product not found"
         )
     product_repository.delete(db, product)
-    return None

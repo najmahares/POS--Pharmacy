@@ -3,13 +3,23 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import (auth, category, customer, payment, product, receipt,
-                         sale, sale_item, supplier, user)
+from app.routers import (
+    auth,
+    category,
+    customer,
+    payment,
+    product,
+    receipt,
+    sale,
+    sale_item,
+    supplier,
+    user,
+)
 
 app = FastAPI(
     title="Hospital Pharmacy POS System",
     description="Point of Sale System for Hospital and Pharmacy Management",
-    version="1.0.0"
+    version="1.0.0",
 )
 
 app.add_middleware(

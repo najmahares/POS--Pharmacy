@@ -1,4 +1,3 @@
-
 from uuid import UUID
 
 from fastapi import HTTPException, status
@@ -13,8 +12,7 @@ def get_product(db: Session, product_id: UUID):
     product = product_repository.get(db, product_id)
     if not product:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Product not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Product not found"
         )
     return product
 

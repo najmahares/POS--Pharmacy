@@ -1,6 +1,5 @@
 import uuid
 from datetime import datetime
-from decimal import Decimal
 
 from sqlalchemy import Column, DateTime, ForeignKey, Numeric, String
 from sqlalchemy.dialects.postgresql import UUID
@@ -23,4 +22,3 @@ class Payment(Base):
     created_at = Column(DateTime, default=datetime.now)
 
     sale = relationship("Sale", back_populates="payments")
-

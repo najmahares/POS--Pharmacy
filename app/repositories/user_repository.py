@@ -1,5 +1,3 @@
-
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -14,19 +12,19 @@ class UserRepository:
         """Initialize UserRepository."""
         self.model = User
 
-    def get(self, db: Session, user_id: UUID) -> Optional[User]:
+    def get(self, db: Session, user_id: UUID) -> User | None:
         """Get a user by UUID."""
         return db.get(User, user_id)
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[User]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[User]:
         """Get all users with pagination."""
         return db.query(User).offset(skip).limit(limit).all()
 
-    def get_by_username(self, db: Session, username: str) -> Optional[User]:
+    def get_by_username(self, db: Session, username: str) -> User | None:
         """Get a user by username."""
         return db.query(User).filter(User.username == username).first()
 
-    def get_by_email(self, db: Session, email: str) -> Optional[User]:
+    def get_by_email(self, db: Session, email: str) -> User | None:
         """Get a user by email."""
         return db.query(User).filter(User.email == email).first()
 
@@ -55,6 +53,7 @@ class UserRepository:
     def update_last_login(self, db: Session, user_id: UUID) -> User:
         """Update user's last login timestamp."""
         from datetime import datetime
+
         user = self.get(db, user_id)
         if user:
             user.last_login = datetime.now()
@@ -64,4 +63,3 @@ class UserRepository:
 
 
 user_repository = UserRepository()
-

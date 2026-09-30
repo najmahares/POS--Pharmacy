@@ -1,4 +1,3 @@
-
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
@@ -24,8 +23,7 @@ def get_current_active_user(
     """Get current active user."""
     if not current_user.is_active:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Inactive user"
+            status_code=status.HTTP_403_FORBIDDEN, detail="Inactive user"
         )
     return current_user
 
@@ -34,8 +32,7 @@ def require_admin(current_user: User = Depends(get_current_user)) -> User:
     """Require admin role."""
     if current_user.role != "admin":
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Admin privileges required"
+            status_code=status.HTTP_403_FORBIDDEN, detail="Admin privileges required"
         )
     return current_user
 
@@ -45,7 +42,7 @@ def require_pharmacist(current_user: User = Depends(get_current_user)) -> User:
     if current_user.role not in ["admin", "pharmacist"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Pharmacist privileges required"
+            detail="Pharmacist privileges required",
         )
     return current_user
 
@@ -55,7 +52,7 @@ def require_inventory_manager(current_user: User = Depends(get_current_user)) ->
     if current_user.role not in ["admin", "inventory-manager"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Inventory manager privileges required"
+            detail="Inventory manager privileges required",
         )
     return current_user
 
@@ -65,7 +62,6 @@ def require_pharmacy_tech(current_user: User = Depends(get_current_user)) -> Use
     if current_user.role not in ["admin", "pharmacist", "pharmacy-technician"]:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Pharmacy technician privileges required"
+            detail="Pharmacy technician privileges required",
         )
     return current_user
-

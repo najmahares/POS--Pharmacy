@@ -17,8 +17,8 @@ class Product(Base):
     sku = Column(String, unique=True, index=True, nullable=False)
     barcode = Column(String, unique=True, index=True, nullable=True)
     description = Column(String, nullable=True)
-    price = Column(Numeric(10, 2), nullable=False, default=Decimal('0.00'))
-    cost = Column(Numeric(10, 2), nullable=False, default=Decimal('0.00'))
+    price = Column(Numeric(10, 2), nullable=False, default=Decimal("0.00"))
+    cost = Column(Numeric(10, 2), nullable=False, default=Decimal("0.00"))
     quantity_in_stock = Column(Integer, default=0)
     reorder_level = Column(Integer, default=0)
     expiry_date = Column(DateTime, nullable=True)
@@ -31,4 +31,3 @@ class Product(Base):
     category = relationship("Category", back_populates="products")
     supplier = relationship("Supplier", back_populates="products")
     sale_items = relationship("SaleItem", back_populates="product")
-

@@ -14,7 +14,7 @@ class SaleItem(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     quantity = Column(Numeric(10, 2), nullable=False)
     unit_price = Column(Numeric(10, 2), nullable=False)
-    discount_amount = Column(Numeric(10, 2), default=Decimal('0.00'))
+    discount_amount = Column(Numeric(10, 2), default=Decimal("0.00"))
     tax_amount = Column(Numeric(10, 2), nullable=False)
     total_price = Column(Numeric(10, 2), nullable=False)
     dispense_instructions = Column(String, nullable=True)
@@ -25,4 +25,3 @@ class SaleItem(Base):
 
     sale = relationship("Sale", back_populates="sale_items")
     product = relationship("Product", back_populates="sale_items")
-

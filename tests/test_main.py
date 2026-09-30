@@ -1,13 +1,19 @@
-from fastapi.testclient import TestClient
 import pytest
+from fastapi.testclient import TestClient
+
 from app.main import app
 
 client = TestClient(app)
+
+
 @pytest.fixture
 def test_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "Hospital Pharmacy POS System API", "status": "running"}
+    assert response.json() == {
+        "message": "Hospital Pharmacy POS System API",
+        "status": "running",
+    }
 
 
 @pytest.fixture
@@ -19,11 +25,10 @@ def test_user(client, test_user):
     }
     response = client.post("/users/", json=user_data)
     assert response.status_code == 200
-    assert response.json()["username"] == user_data["username"] 
+    assert response.json()["username"] == user_data["username"]
 
 
 @pytest.fixture
-
 def auth_headers(client, test_user):
     response = client.post(
         "auth/login",
@@ -31,4 +36,3 @@ def auth_headers(client, test_user):
     )
     token = response.json()["access_token"]
     return {"Authorization": f"Bearer {token}"}
-

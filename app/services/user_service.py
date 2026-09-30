@@ -14,8 +14,7 @@ def get_user(db: Session, user_id: UUID):
     user = user_repository.get(db, user_id)
     if not user:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="User not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
         )
     return user
 

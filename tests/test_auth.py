@@ -1,7 +1,7 @@
 import uuid
-import time
 
 import pytest
+
 from app.core.security import create_access_token
 
 
@@ -23,7 +23,7 @@ def test_register_returns_201_and_id(client):
     r = client.post("/auth/register", json=_reg())
     assert r.status_code == 201
     body = r.json()
-    assert uuid.UUID(body["id"])  
+    assert uuid.UUID(body["id"])
     assert body["is_active"] is True
     assert "created_at" in body
 
@@ -40,15 +40,23 @@ def test_register_persists_hashed_password(client, db_session):
     p = _reg()
     client.post("/auth/register", json=p)
     from app.models.user import User
+
     u = db_session.query(User).filter_by(username=p["username"]).first()
     assert u is not None
-    assert u.password_hash != p["password"]             
-    assert u.password_hash.startswith("$2")              
+    assert u.password_hash != p["password"]
+    assert u.password_hash.startswith("$2")
 
 
-@pytest.mark.parametrize("bad_email", [
-    "not-an-email", "no@at", "@nodomain.com", "spaces in@email.com", "",
-])
+@pytest.mark.parametrize(
+    "bad_email",
+    [
+        "not-an-email",
+        "no@at",
+        "@nodomain.com",
+        "spaces in@email.com",
+        "",
+    ],
+)
 def test_register_rejects_bad_email(client, bad_email):
     r = client.post("/auth/register", json=_reg(email=bad_email))
     assert r.status_code == 422
@@ -76,6 +84,7 @@ def test_register_duplicate_email(client, cashier_user):
     r = client.post("/auth/register", json=_reg(email=cashier_user.email))
     assert r.status_code == 400
 
+
 def test_login_returns_both_tokens(client, cashier_user):
     r = client.post(
         "/auth/login",
@@ -84,7 +93,7 @@ def test_login_returns_both_tokens(client, cashier_user):
     assert r.status_code == 200
     b = r.json()
     assert b["token_type"] == "bearer"
-    assert b["access_token"] != b["refresh_token"]       
+    assert b["access_token"] != b["refresh_token"]
     assert b["expires_in"] > 0
     assert b["user"]["id"] == str(cashier_user.id)
     assert b["user"]["role"] == "cashier"
@@ -152,7 +161,7 @@ def test_refresh_rejects_access_token(client, cashier_user):
         "/auth/login",
         data={"username": cashier_user.username, "password": "Pass123!"},
     ).json()
-    
+
     r = client.post(
         "/auth/refresh",
         params={"refresh_token": login["access_token"]},
@@ -165,9 +174,9 @@ def test_refresh_rejects_garbage(client):
     assert r.status_code in (400, 401)
 
 
-
 def test_access_token_has_correct_claims(cashier_user):
     from app.core.security import decode_access_token
+
     token = create_access_token(str(cashier_user.id))
     payload = decode_access_token(token)
     assert payload["sub"] == str(cashier_user.id)

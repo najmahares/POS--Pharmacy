@@ -1,6 +1,5 @@
 import uuid
 from datetime import datetime
-from decimal import Decimal
 
 from sqlalchemy import Boolean, Column, DateTime, Integer, Numeric, String
 from sqlalchemy.dialects.postgresql import UUID
@@ -28,4 +27,3 @@ class Supplier(Base):
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
     products = relationship("Product", back_populates="supplier")
-

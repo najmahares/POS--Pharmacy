@@ -1,4 +1,3 @@
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -13,21 +12,25 @@ class CustomerRepository:
         """Initialize CustomerRepository."""
         self.model = Customer
 
-    def get(self, db: Session, customer_id: UUID) -> Optional[Customer]:
+    def get(self, db: Session, customer_id: UUID) -> Customer | None:
         """Get a customer by UUID."""
         return db.get(Customer, customer_id)
 
-    def get_by_email(self, db: Session, email: str) -> Optional[Customer]:
+    def get_by_email(self, db: Session, email: str) -> Customer | None:
         """Get a customer by email."""
         return db.query(Customer).filter(Customer.email == email).first()
 
-    def get_by_medical_record(self, db: Session, medical_record_number: str) -> Optional[Customer]:
+    def get_by_medical_record(
+        self, db: Session, medical_record_number: str
+    ) -> Customer | None:
         """Get a customer by medical record number."""
-        return db.query(Customer).filter(
-            Customer.medical_record_number == medical_record_number
-        ).first()
+        return (
+            db.query(Customer)
+            .filter(Customer.medical_record_number == medical_record_number)
+            .first()
+        )
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[Customer]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[Customer]:
         """Get all customers with pagination."""
         return db.query(Customer).offset(skip).limit(limit).all()
 
@@ -55,4 +58,3 @@ class CustomerRepository:
 
 
 customer_repository = CustomerRepository()
-

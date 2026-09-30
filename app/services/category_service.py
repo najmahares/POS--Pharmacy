@@ -1,4 +1,3 @@
-
 from uuid import UUID
 
 from fastapi import HTTPException, status
@@ -13,8 +12,7 @@ def get_category(db: Session, category_id: UUID):
     category = category_repository.get(db, category_id)
     if not category:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Category not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="Category not found"
         )
     return category
 

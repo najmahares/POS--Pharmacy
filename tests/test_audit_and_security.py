@@ -1,12 +1,13 @@
 import uuid
-import jwt
 from datetime import datetime, timedelta, timezone
 
+import jwt
 import pytest
 
 
 def test_hash_and_verify_password():
     from app.core.security import hash_password, verify_hash
+
     pw = "mysecretpassword"
     hashed = hash_password(pw)
     assert isinstance(hashed, str)
@@ -18,11 +19,13 @@ def test_hash_and_verify_password():
 
 def test_hash_is_salted():
     from app.core.security import hash_password
+
     assert hash_password("same") != hash_password("same")
 
 
 def test_create_access_token_returns_string():
     from app.core.security import create_access_token
+
     token = create_access_token("12345")
     assert isinstance(token, str)
     assert token.count(".") == 2
@@ -30,6 +33,7 @@ def test_create_access_token_returns_string():
 
 def test_decode_access_token_has_correct_claims():
     from app.core.security import create_access_token, decode_access_token
+
     token = create_access_token("12345")
     payload = decode_access_token(token)
     assert payload["sub"] == "12345"
@@ -40,6 +44,7 @@ def test_decode_access_token_has_correct_claims():
 
 def test_create_and_decode_refresh_token():
     from app.core.security import create_refresh_token, decode_refresh_token
+
     token = create_refresh_token("12345")
     payload = decode_refresh_token(token)
     assert payload["sub"] == "12345"
@@ -48,6 +53,7 @@ def test_create_and_decode_refresh_token():
 
 def test_decode_refresh_token_rejects_access_token():
     from app.core.security import create_access_token, decode_refresh_token
+
     token = create_access_token("12345")
     with pytest.raises(ValueError):
         decode_refresh_token(token)
@@ -55,6 +61,7 @@ def test_decode_refresh_token_rejects_access_token():
 
 def test_expired_token_rejected(client_no_auth):
     from app.core.security import create_access_token
+
     token = create_access_token("test-user-id", expires_delta=timedelta(hours=-1))
     r = client_no_auth.get("/categories/", headers={"Authorization": f"Bearer {token}"})
     assert r.status_code == 401
@@ -112,6 +119,7 @@ def test_token_signed_with_wrong_key_rejected(client_no_auth):
 
 def test_token_for_nonexistent_user_rejected(client_no_auth):
     from app.core.security import create_access_token
+
     token = create_access_token(str(uuid.uuid4()))
     r = client_no_auth.get(
         "/categories/",
@@ -187,7 +195,9 @@ RBAC_MATRIX = [
 ]
 
 
-@pytest.mark.parametrize("method,path,allowed_role,payload,forbidden_roles", RBAC_MATRIX)
+@pytest.mark.parametrize(
+    "method,path,allowed_role,payload,forbidden_roles", RBAC_MATRIX
+)
 def test_rbac_read_matrix(
     client,
     method,
@@ -223,8 +233,14 @@ def test_create_category_inventory_ok_cashier_forbidden(
     client, inventory_headers, cashier_headers
 ):
     payload = {"name": f"RBAC-{uuid.uuid4().hex[:6]}"}
-    assert client.post("/categories/", json=payload, headers=inventory_headers).status_code == 201
-    assert client.post("/categories/", json=payload, headers=cashier_headers).status_code == 403
+    assert (
+        client.post("/categories/", json=payload, headers=inventory_headers).status_code
+        == 201
+    )
+    assert (
+        client.post("/categories/", json=payload, headers=cashier_headers).status_code
+        == 403
+    )
 
 
 def test_create_product_inventory_ok_cashier_forbidden(
@@ -238,9 +254,15 @@ def test_create_product_inventory_ok_cashier_forbidden(
         "reorder_level": 1,
         "expiry_date": "2030-01-01",
     }
-    assert client.post("/products/", json=payload, headers=inventory_headers).status_code == 201
+    assert (
+        client.post("/products/", json=payload, headers=inventory_headers).status_code
+        == 201
+    )
     payload["sku"] = f"RBAC-{uuid.uuid4().hex[:8]}"
-    assert client.post("/products/", json=payload, headers=cashier_headers).status_code == 403
+    assert (
+        client.post("/products/", json=payload, headers=cashier_headers).status_code
+        == 403
+    )
 
 
 def test_delete_category_admin_ok_cashier_forbidden(
@@ -251,8 +273,16 @@ def test_delete_category_admin_ok_cashier_forbidden(
         json={"name": f"DEL-{uuid.uuid4().hex[:6]}"},
         headers=auth_headers,
     ).json()
-    assert client.delete(f"/categories/{created['id']}", headers=cashier_headers).status_code == 403
-    assert client.delete(f"/categories/{created['id']}", headers=auth_headers).status_code == 204
+    assert (
+        client.delete(
+            f"/categories/{created['id']}", headers=cashier_headers
+        ).status_code
+        == 403
+    )
+    assert (
+        client.delete(f"/categories/{created['id']}", headers=auth_headers).status_code
+        == 204
+    )
 
 
 def test_delete_product_admin_ok_inventory_forbidden(
@@ -267,8 +297,16 @@ def test_delete_product_admin_ok_inventory_forbidden(
         "expiry_date": "2030-01-01",
     }
     created = client.post("/products/", json=payload, headers=inventory_headers).json()
-    assert client.delete(f"/products/{created['id']}", headers=inventory_headers).status_code == 403
-    assert client.delete(f"/products/{created['id']}", headers=auth_headers).status_code == 204
+    assert (
+        client.delete(
+            f"/products/{created['id']}", headers=inventory_headers
+        ).status_code
+        == 403
+    )
+    assert (
+        client.delete(f"/products/{created['id']}", headers=auth_headers).status_code
+        == 204
+    )
 
 
 def test_delete_user_requires_admin(client, auth_headers, cashier_headers):
@@ -281,8 +319,14 @@ def test_delete_user_requires_admin(client, auth_headers, cashier_headers):
         "role": "cashier",
     }
     created = client.post("/users/", json=payload, headers=auth_headers).json()
-    assert client.delete(f"/users/{created['id']}", headers=cashier_headers).status_code == 403
-    assert client.delete(f"/users/{created['id']}", headers=auth_headers).status_code == 204
+    assert (
+        client.delete(f"/users/{created['id']}", headers=cashier_headers).status_code
+        == 403
+    )
+    assert (
+        client.delete(f"/users/{created['id']}", headers=auth_headers).status_code
+        == 204
+    )
 
 
 def test_cashier_cannot_list_users(client, cashier_headers):
@@ -298,7 +342,9 @@ def test_cashier_cannot_create_user(client, cashier_headers):
         "last_name": "Y",
         "role": "cashier",
     }
-    assert client.post("/users/", json=payload, headers=cashier_headers).status_code == 403
+    assert (
+        client.post("/users/", json=payload, headers=cashier_headers).status_code == 403
+    )
 
 
 def test_cashier_cannot_list_low_stock(client, cashier_headers):
@@ -309,19 +355,27 @@ def test_cashier_cannot_list_expired(client, cashier_headers):
     assert client.get("/products/expired", headers=cashier_headers).status_code == 403
 
 
-def test_sale_status_update_requires_pharmacist(client, auth_headers, cashier_headers, pharmacist_headers):
+def test_sale_status_update_requires_pharmacist(
+    client, auth_headers, cashier_headers, pharmacist_headers
+):
     sale = client.post(
         "/sales/",
         json=_sale_payload(),
         headers=auth_headers,
     ).json()
-    assert client.patch(
-        f"/sales/{sale['id']}/status",
-        params={"status": "completed"},
-        headers=cashier_headers,
-    ).status_code == 403
-    assert client.patch(
-        f"/sales/{sale['id']}/status",
-        params={"status": "completed"},
-        headers=pharmacist_headers,
-    ).status_code == 200
+    assert (
+        client.patch(
+            f"/sales/{sale['id']}/status",
+            params={"status": "completed"},
+            headers=cashier_headers,
+        ).status_code
+        == 403
+    )
+    assert (
+        client.patch(
+            f"/sales/{sale['id']}/status",
+            params={"status": "completed"},
+            headers=pharmacist_headers,
+        ).status_code
+        == 200
+    )

@@ -1,5 +1,3 @@
-
-from typing import List, Optional
 from uuid import UUID
 
 from sqlalchemy.orm import Session
@@ -14,19 +12,19 @@ class SaleItemRepository:
         """Initialize SaleItemRepository."""
         self.model = SaleItem
 
-    def get(self, db: Session, sale_item_id: UUID) -> Optional[SaleItem]:
+    def get(self, db: Session, sale_item_id: UUID) -> SaleItem | None:
         """Get a sale item by UUID."""
         return db.get(SaleItem, sale_item_id)
 
-    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> List[SaleItem]:
+    def get_all(self, db: Session, skip: int = 0, limit: int = 100) -> list[SaleItem]:
         """Get all sale items with pagination."""
         return db.query(SaleItem).offset(skip).limit(limit).all()
 
-    def get_by_sale(self, db: Session, sale_id: UUID) -> List[SaleItem]:
+    def get_by_sale(self, db: Session, sale_id: UUID) -> list[SaleItem]:
         """Get all items in a sale."""
         return db.query(SaleItem).filter(SaleItem.sale_id == sale_id).all()
 
-    def get_by_product(self, db: Session, product_id: UUID) -> List[SaleItem]:
+    def get_by_product(self, db: Session, product_id: UUID) -> list[SaleItem]:
         """Get all sale items for a product."""
         return db.query(SaleItem).filter(SaleItem.product_id == product_id).all()
 
@@ -38,7 +36,7 @@ class SaleItemRepository:
         db.refresh(obj)
         return obj
 
-    def create_bulk(self, db: Session, items_data: list) -> List[SaleItem]:
+    def create_bulk(self, db: Session, items_data: list) -> list[SaleItem]:
         """Create multiple sale items at once."""
         items = [SaleItem(**data) for data in items_data]
         db.add_all(items)
@@ -63,4 +61,3 @@ class SaleItemRepository:
 
 
 sale_item_repository = SaleItemRepository()
-

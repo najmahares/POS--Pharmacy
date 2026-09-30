@@ -32,4 +32,3 @@ class Customer(Base):
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
     sales = relationship("Sale", back_populates="customer")
-
